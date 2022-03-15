@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
+// import createUSer, login funcs from utils
+import { createUser, login } from '../../utils';
 
 
 const Login = ({ setUser }) => {
@@ -11,8 +13,17 @@ const Login = ({ setUser }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setUser({username: username, email: email, pass: pass});
-  }
+    // setUser({username: username, email: email, pass: pass});
+
+    // if press login bool is true and therefore runs the login function
+    if(bool) {
+      // use the login utils function to login user in - then pass setUser as an argument and use setter in the utils to log user in
+      login(username, pass, setUser)
+    } else if(email && email.includes("@")) {
+        // use the createUser utils functions to post data - then pass setUser as an argument and use setter in the utils
+        createUser(username, email, pass, setUser);
+    } 
+  };
 
   return (
     <>
