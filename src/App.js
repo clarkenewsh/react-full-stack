@@ -1,7 +1,8 @@
-import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Login from './components/login/login';
 import Home from './components/home/Home';
+import { tokenLogin } from './utils';
+import './App.css';
 
 const App = () => {
 
@@ -15,6 +16,11 @@ const App = () => {
   // }
 
   const [user, setUser] = useState();
+
+  // call token login on page load to grab user token. setUser with the token to persit login 
+  useEffect(() => {
+    tokenLogin(setUser);
+  },[]);
 
   return (
     <div className="App">

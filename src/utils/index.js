@@ -14,6 +14,8 @@ export const createUser = async (username, email, pass, setter) => {
     const data = await response.json();
     // set the user with response from the inputted form values
     setter(data.user);
+    // store user token in local storage
+    localStorage.setItem("myToken", data.token);
   } catch (error) {
     console.log(error);
   }
@@ -35,7 +37,23 @@ export const login = async (username, pass, setter) => {
     const data = await response.json();
     // set the user with response from the inputted form values
     setter(data.user);
+    // store user token in local storage
+    localStorage.setItem("myToken", data.token);
   } catch (error) {
     console.log(error);
   }
-}
+};
+
+
+export const tokenLogin = async (setter) => {
+  try {
+    const response = await fetch(`${process.env.REACT_APP_REST_API}user`, {
+      method: "GET",
+      headers: {Authorization: `Bearer ${localStorage.getItem("myToken")}` },
+    });
+    const data = await response.json();
+    setter(data.user);
+  } catch (error) {
+    console.log(error)
+  }
+};
