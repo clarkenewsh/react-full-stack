@@ -1,8 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import { deleteUser } from '../../utils';
 // import { Navigate } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
 import PhotoContainer from '../PhotoContainer/PhotoContainer';
+import './Home.css';
 
 const Home = ({ user }) => {
 
@@ -27,17 +29,22 @@ const Home = ({ user }) => {
     fetchPhotos();
   }, []);
 
+  const deleteHandler = (user) => {
+    deleteUser();
+    console.log(user);
+  }
 
   return (
-    <div>
+    <section className="wrapper">
       {/* {user && <Navigate to="/home" />} */}
-      <Navbar />
-      <h1>Home Page</h1>
-      <button onClick={fetchPhotos}>Grab photos</button>
-      {photos.map((photo, index) => (
-        <PhotoContainer photo={photo} key={index} />
-      ))}
-    </div>
+        <button onClick={fetchPhotos}>Grab photos</button>
+        <section className='photo-cards'> 
+          {photos.map((photo, index) => (
+            <PhotoContainer photo={photo} key={index} />
+          ))}
+        </section>
+       <button onClick={() => deleteHandler(user)}>Delete account</button>
+    </section>
   
   )
 }
