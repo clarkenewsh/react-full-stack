@@ -1,15 +1,23 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
+// import { tokenLogin } from './utils';
 // import createUSer, login funcs from utils
 import { createUser, login } from '../../utils';
 
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, user }) => {
 
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [pass, setPass] = useState();
   const [bool, setBool] = useState(false);
+
+  // use effect here if using router router dom
+  // call token login on page load to grab user token. setUser with the token to persist login 
+  // useEffect(() => {
+  //   tokenLogin(setUser);
+  // },[]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -27,6 +35,7 @@ const Login = ({ setUser }) => {
 
   return (
     <>
+      {/* {!user && <Navigate to="/" />} */}
       <form onSubmit={submitHandler}>
         <input onChange={(event) => setUsername(event.target.value)} placeholder="Username" />
         {/* only render email input if bool is false */}

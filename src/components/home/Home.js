@@ -1,8 +1,10 @@
 import React from 'react'
-import { useState, useEffect } from'react';
+import { useState, useEffect } from 'react';
+// import { Navigate } from 'react-router-dom';
+import Navbar from '../navbar/Navbar';
 import PhotoContainer from '../PhotoContainer/PhotoContainer';
 
-const Home = () => {
+const Home = ({ user }) => {
 
   const [photos, setPhotos] = useState([]);
 
@@ -28,6 +30,8 @@ const Home = () => {
 
   return (
     <div>
+      {/* {user && <Navigate to="/home" />} */}
+      <Navbar />
       <h1>Home Page</h1>
       <button onClick={fetchPhotos}>Grab photos</button>
       {photos.map((photo, index) => (
