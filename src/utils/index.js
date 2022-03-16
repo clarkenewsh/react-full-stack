@@ -57,3 +57,13 @@ export const tokenLogin = async (setter) => {
     console.log(error)
   }
 };
+
+export const deleteUser = async (user, setter) => {
+  try {
+    const response = await fetch(`${process.env.REACT_APP_REST_API}user/${user.id}`, {
+      method: "DELETE"
+    });
+  } catch (error) {
+    console.log(error)
+  }
+}
