@@ -1,0 +1,22 @@
+nav {
+  display: flex;
+  align-items: center;
+  color: white;
+  height: 60px;
+}
+
+#logo {
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  margin-right: auto;
+}
+
+button {
+  border: none;
+  background: transparent;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 0.375rem;
+}
+
