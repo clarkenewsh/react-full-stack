@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom';
 // import { tokenLogin } from './utils';
 // import createUSer, login funcs from utils
 import { createUser, login } from '../../utils';
+import './Login.css';
 
 
 const Login = ({ setUser, user }) => {
@@ -37,11 +38,15 @@ const Login = ({ setUser, user }) => {
     <>
       {/* {!user && <Navigate to="/" />} */}
       <form onSubmit={submitHandler}>
-        <input onChange={(event) => setUsername(event.target.value)} placeholder="Username" />
+        <input onChange={(event) => setUsername(event.target.value)} placeholder="Username" required />
         {/* only render email input if bool is false */}
-        {!bool && <input onChange={(event) => setEmail(event.target.value)} type="email" placeholder="Email" />}
-        <input onChange={(event) => setPass(event.target.value)} type="password" placeholder="Password" />
-        <button type='submit'>Submit</button>
+        { !bool && <input onChange={(event) => setEmail(event.target.value)} type="email" placeholder="Email" required /> }
+        <input onChange={(event) => setPass(event.target.value)} type="password" placeholder="Password" required />
+        { !bool ? 
+          <button type='submit'>Register</button> 
+          : 
+          <button type='submit'>Login</button> 
+        }
       </form>
       {/* Set bool to opposite */}
       <button onClick={() => setBool(!bool)}>Login or sign-up</button>
