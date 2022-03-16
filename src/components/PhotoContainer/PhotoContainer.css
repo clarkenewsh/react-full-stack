@@ -1,5 +1,16 @@
 img {
   width: 300px;
-  height: auto;
+  height: 250px;
   max-width: 100%;
+}
+
+figure {
+  background: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 40px rgb(0 0 0 / 20%);
+}
+
+p {
+  padding: 10px;
+  text-align: center;
 }
