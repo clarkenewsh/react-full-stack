@@ -1,4 +1,37 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;700&display=swap');
+
+/* Layout styles / universal */
+
+body {
+  margin: 0;
+  font-family: 'Prompt', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background: #f2f2f2;
 }
 
+.wrapper {
+  max-width: 74em;
+  margin: 0 auto;
+  /* display: flex; */
+  /* flex-direction: column; */
+  width: 97%;
+  /* justify-content: center; */
+} 
+
+h1, h2 {
+  color: black;
+}
+
+header {
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}
+
+button {
+  background-color: #833ab4;
+  font-weight: 700;
+  cursor: pointer;
+}
