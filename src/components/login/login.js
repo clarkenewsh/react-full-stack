@@ -49,7 +49,7 @@ const Login = ({ setUser, user }) => {
         }
       </form>
       {/* Set bool to opposite */}
-      <button onClick={() => setBool(!bool)}>Login or sign-up</button>
+      <button onClick={() => setBool(!bool)}>Already have an account</button>
     </>
   );
 }

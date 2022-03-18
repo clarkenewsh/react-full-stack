@@ -2,24 +2,31 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { deleteUser } from '../../utils';
 // import { Navigate } from 'react-router-dom';
-import Navbar from '../navbar/Navbar';
 import PhotoContainer from '../PhotoContainer/PhotoContainer';
 import './Home.css';
 
-const Home = ({ user }) => {
+const Home = ({ user, setUser }) => {
 
   const [photos, setPhotos] = useState([]);
+  const [error, setError] = useState(null);
+
 
   const fetchPhotos = async () => {
     try {
       const response = await fetch('https://picsum.photos/v2/list/');
-      // convert to json
+
+      if(response.status !== 200) {
+        throw new Error('oops, could not connect to resource');
+      }
+      // parse data to json
       const data = await response.json();
 
       setPhotos(data);
       console.log(data);
+
     } catch (error) {
-      console.log(error)
+      setError(error.message);
+      console.log(error);
     }
   }
 
@@ -29,13 +36,15 @@ const Home = ({ user }) => {
     fetchPhotos();
   }, []);
 
-  const deleteHandler = (user) => {
-    deleteUser();
+  const deleteUserHandler = (user) => {
+    deleteUser(setUser);
     console.log(user);
   }
 
   return (
     <section className="wrapper">
+      {error && <h1>An error has occurred: {error}</h1>}
+      <button onClick={() => deleteUserHandler(user, setUser)}>Delete account</button>
       {/* {user && <Navigate to="/home" />} */}
         <button onClick={fetchPhotos}>Grab photos</button>
         <section className='photo-cards'> 
@@ -43,7 +52,7 @@ const Home = ({ user }) => {
             <PhotoContainer photo={photo} key={index} />
           ))}
         </section>
-       <button onClick={() => deleteHandler(user)}>Delete account</button>
+       
     </section>
   
   )

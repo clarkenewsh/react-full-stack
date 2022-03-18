@@ -41,7 +41,7 @@ const App = () => {
         {/* {user && <h2>{user}</h2>} */}
         {user ? <h1>Welcome, {user}</h1> : <h1>Login / Register</h1>}
         {/* If not logged in render login. If logged in render home page */}
-        {!user ? <Login setUser={setUser} /> : <Home />} 
+        {!user ? <Login setUser={setUser} /> : <Home setUser={setUser} />} 
       </main>
      </>
     //  <BrowserRouter className="App">
